@@ -160,14 +160,9 @@ public class DoublyLinkedCircularList<T> implements LinkedListADT<T>, Iterable<T
 			return -1;
 
 		int index = 0;
-		DoubleNode<T> node = front;
-		boolean frontTraversed = false;
-		while (node != front || !frontTraversed) {
-			if (!frontTraversed)
-				frontTraversed = true;
-			if (node.getElement().equals(element))
+		for (T item : this) {
+			if (item.equals(element))
 				return index;
-			node = node.getNext();
 			index++;
 		}
 		return -1;
