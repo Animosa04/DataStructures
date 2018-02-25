@@ -1,21 +1,46 @@
 package Stack;
 
 public interface StackADT<T> {
-	// Adds an element to the top of the stack
+	/**
+	 * Adds an element to the top of the stack.
+	 * 
+	 * @param element
+	 *            element to be pushed to the top of the stack
+	 */
 	void push(T element);
 
-	// Removes and returns the element on the top of the stack
+	/**
+	 * Removes and return the top element of the stack.
+	 * 
+	 * @return T element removed from the top of the stack
+	 */
 	T pop();
 
-	// Returns without removing the element at the top of the stack
+	/**
+	 * Returns without removing the top element of the stack.
+	 * 
+	 * @return T element on top of the stack
+	 */
 	T peek();
 
-	// Returns if the stack is empty
+	/**
+	 * Returns true if the stack is empty.
+	 * 
+	 * @return boolean whether or not the stack is empty
+	 */
 	boolean isEmpty();
 
-	// Returns the size of the stack
+	/**
+	 * Returns the number of elements in the stack.
+	 * 
+	 * @return int number of elements in the stack
+	 */
 	int size();
 
-	// Returns a string representation of the stack
+	/**
+	 * Returns a string representation of the stack.
+	 * 
+	 * @return String representation of the stack
+	 */
 	String toString();
 }
