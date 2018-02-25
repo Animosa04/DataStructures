@@ -26,14 +26,14 @@ public interface StackADT<T> {
 	/**
 	 * Returns true if the stack is empty.
 	 * 
-	 * @return boolean whether or not the stack is empty
+	 * @return boolean whether the stack is empty
 	 */
 	boolean isEmpty();
 
 	/**
 	 * Returns the number of elements in the stack.
 	 * 
-	 * @return int number of elements in the stack
+	 * @return int representing the number of elements in the stack
 	 */
 	int size();
 

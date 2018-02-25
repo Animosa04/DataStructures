@@ -6,7 +6,7 @@ public class ArrayStack<T> implements StackADT<T> {
 	 */
 	private final int DEFAULT_SIZE = 100;
 	/**
-	 * an array of generic objects representing the stack
+	 * an array of generic elements representing the stack
 	 */
 	private T[] stack;
 	/**
@@ -107,6 +107,9 @@ public class ArrayStack<T> implements StackADT<T> {
 		return top;
 	}
 
+	/**
+	 * Doubles the size of the array representing the stack
+	 */
 	public void expand() {
 		T[] bigger_stack = (T[]) new Object[stack.length * 2];
 		for (int i = 0; i < stack.length; i++) {

@@ -4,14 +4,31 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class SinglyLinkedList<T> implements LinkedListADT<T>, Iterable<T> {
-	LinearNode<T> front;
+	/**
+	 * reference to the front element of the list
+	 */
+	private LinearNode<T> front;
+	/**
+	 * int representing the number of elements in the list
+	 */
 	int count;
 
+	/**
+	 * Creates an empty singly linked list of a generic type.
+	 */
 	public SinglyLinkedList() {
 		front = null;
 		count = 0;
 	}
 
+	/**
+	 * Adds an element at the end of the list. Null elements are not permitted.
+	 * 
+	 * @param element
+	 *            element to be added to the list
+	 * @throws IllegalArgumentException
+	 *             if element is null
+	 */
 	@Override
 	public void add(T element) {
 		if (element == null)
@@ -26,6 +43,18 @@ public class SinglyLinkedList<T> implements LinkedListADT<T>, Iterable<T> {
 		count++;
 	}
 
+	/**
+	 * Adds an element at the specified index. Null elements are not permitted.
+	 * 
+	 * @param index
+	 *            index where the element should be placed
+	 * @param element
+	 *            element to be added to the list
+	 * @throws IndexOutOfBoundsException
+	 *             if the specified index is out of bounds
+	 * @throws IllegalArgumentException
+	 *             if element is null
+	 */
 	@Override
 	public void add(int index, T element) {
 		if (index < 0 || (index > count - 1 && index != 0))
@@ -43,6 +72,17 @@ public class SinglyLinkedList<T> implements LinkedListADT<T>, Iterable<T> {
 		count++;
 	}
 
+	/**
+	 * Sets the element of the node at the specified index. Null elements are not
+	 * permitted.
+	 * 
+	 * @param index
+	 *            index of the node whose element is to be set
+	 * @param element
+	 *            element to be set as the node's new element
+	 * @throws IllegalArgumentException
+	 *             if element is null
+	 */
 	@Override
 	public void set(int index, T element) {
 		if (element == null)
@@ -51,11 +91,29 @@ public class SinglyLinkedList<T> implements LinkedListADT<T>, Iterable<T> {
 		getNode(index).setElement(element);
 	}
 
+	/**
+	 * Returns the element of the node at the specified index.
+	 * 
+	 * @param index
+	 *            index of node
+	 * @return element of the node at the specified index
+	 */
 	@Override
 	public T get(int index) {
 		return getNode(index).getElement();
 	}
 
+	/**
+	 * Returns the node at the specified index.
+	 * 
+	 * @param index
+	 *            index of node
+	 * @return node at the specified index
+	 * @throws IllegalStateException
+	 *             if the list is empty
+	 * @throws IndexOutOfBoundsException
+	 *             if index is out out bounds
+	 */
 	@Override
 	public LinearNode<T> getNode(int index) {
 		if (isEmpty())
@@ -70,6 +128,17 @@ public class SinglyLinkedList<T> implements LinkedListADT<T>, Iterable<T> {
 		return result;
 	}
 
+	/**
+	 * Removes the node at the specified index and returns its element.
+	 * 
+	 * @param index
+	 *            index of the node to be removed
+	 * @return element of the removed node
+	 * @throws IllegalStateException
+	 *             if the list is empty
+	 * @throws IndexOutOfBoundsException
+	 *             if index is out of bounds
+	 */
 	@Override
 	public T remove(int index) {
 		if (isEmpty())
@@ -90,6 +159,15 @@ public class SinglyLinkedList<T> implements LinkedListADT<T>, Iterable<T> {
 		return to_remove.getElement();
 	}
 
+	/**
+	 * Removes a node with the specified element and returns the element.
+	 * 
+	 * @param element
+	 *            to be removed from the list
+	 * @return element removed
+	 * @throws IllegalStateException
+	 *             if the element is not in the list
+	 */
 	@Override
 	public T removeElement(T element) {
 		try {
@@ -99,6 +177,13 @@ public class SinglyLinkedList<T> implements LinkedListADT<T>, Iterable<T> {
 		}
 	}
 
+	/**
+	 * Returns the index of a specified element in the list.
+	 * 
+	 * @param element
+	 *            whose index is searched
+	 * @return index of the specified element, -1 if the element is not in the list
+	 */
 	@Override
 	public int indexOf(T element) {
 		if (isEmpty())
@@ -113,21 +198,45 @@ public class SinglyLinkedList<T> implements LinkedListADT<T>, Iterable<T> {
 		return -1;
 	}
 
+	/**
+	 * Returns whether the element specified is in the list. If the index of the
+	 * element is not -1, it means that the element is in the list.
+	 * 
+	 * @param element
+	 *            element to check if is present in the list
+	 * @return true if the element is in the list
+	 */
 	@Override
 	public boolean contains(T element) {
 		return indexOf(element) != -1;
 	}
 
+	/**
+	 * Returns whether the list is empty or not.
+	 * 
+	 * @return true if the size of the list is 0
+	 */
 	@Override
 	public boolean isEmpty() {
 		return count == 0;
 	}
 
+	/**
+	 * Returns the number of elements in the list.
+	 * 
+	 * @return number of elements in the list
+	 */
 	@Override
 	public int size() {
 		return count;
 	}
 
+	/**
+	 * Returns an iterator for the list that can be used to traverse the list
+	 * linearly.
+	 * 
+	 * @return iterator for the list
+	 */
 	@Override
 	public Iterator<T> iterator() {
 		return new SinglyLinkedListIterator<T>(front);
@@ -156,12 +265,19 @@ public class SinglyLinkedList<T> implements LinkedListADT<T>, Iterable<T> {
 
 	}
 
+	/**
+	 * Returns a string representation of the list.
+	 * 
+	 * @return String representation of the list
+	 */
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		for (T node : this)
-			sb.append(node + "\n");
+		for (T node : this) {
+			sb.append(node + ", ");
+		}
+		sb.delete(sb.length() - 2, sb.length());
+		sb.append("]");
 		return sb.toString();
-
 	}
 }
