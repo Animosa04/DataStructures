@@ -105,11 +105,9 @@ public class SinglyLinkedList<T> implements LinkedListADT<T>, Iterable<T> {
 			return -1;
 
 		int index = 0;
-		LinearNode<T> node = front;
-		while (node != null) {
-			if (node.getElement().equals(element))
+		for (T item : this) {
+			if (item.equals(element))
 				return index;
-			node = node.getNext();
 			index++;
 		}
 		return -1;
