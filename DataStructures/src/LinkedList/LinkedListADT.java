@@ -1,19 +1,18 @@
-package Linked_List;
+package LinkedList;
 
 public interface LinkedListADT<T> {
-	void add(T element);
 
-	void add(int index, T element);
+	void add(T element);
 
 	void set(int index, T element);
 
 	T get(int index);
 
-	Node<T> getNode(int index);
-
 	T remove(int index);
 
 	T removeElement(T element);
+
+	void clear();
 
 	int indexOf(T element);
 
@@ -22,6 +21,8 @@ public interface LinkedListADT<T> {
 	boolean isEmpty();
 
 	int size();
+
+	LinearNode<T> getNode(int index);
 
 	String toString();
 }
